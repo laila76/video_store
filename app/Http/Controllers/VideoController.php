@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Video;
 use Illuminate\Http\Request;
+// use App\Http\Controllers\VideoController;
+
+//  use App\Http\Controllers\VideoController;
 
 class VideoController extends Controller
 {
@@ -13,7 +17,10 @@ class VideoController extends Controller
      */
     public function index()
     {
-        //
+      
+      $videos = Video::orderBy('updated_at','desc')->paginate(10);
+      return view('pages.home',compact('videos'));
+
     }
 
     /**
@@ -43,9 +50,11 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Video $video)
     {
-        //
+        // dd('$video');
+        return view ('pages.show', compact('video'));
+        
     }
 
     /**

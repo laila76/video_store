@@ -14,10 +14,11 @@ use App\Http\Controllers\VideoController;
 |
 */
 Route::resource('videos', VideoController::class);
+Route::get('/',[VideoController::class, 'index'])->name("home");
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
